@@ -1,0 +1,19 @@
+python mlm_finetune.py --dataset_path datasets/GTDB/toy_dataset_1000g \
+                       --output_dir finetuned_models/nt_transformer_gtdb_1k \
+                       --model_path /data5/zhanghaohong/transformers_model/nucleotide-transformer-v2-50m-multi-species \
+                       --max_length 1000 \
+                       --per_device_train_batch_size 4 \
+                       --per_device_eval_batch_size 4 \
+                       --gradient_accumulation_steps 2 \
+                       --num_train_epochs 3 \
+                       --lr_init 5e-5 \
+                       --lr_peak 1e-4 \
+                       --warmup_steps 16000 \
+                       --weight_decay 0.01 \
+                       --seed 42 \
+                       --logging_steps 100 \
+                       --save_steps 1000 \
+                       --eval_steps 1000 \
+                       --mlm_probability 0.15 \
+                       --num_workers 64 \
+                       --devices "1,2,3,4"
